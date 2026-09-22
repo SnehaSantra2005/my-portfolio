@@ -382,44 +382,44 @@ function App() {
 
           <div className="skill-row">
             <span>01</span>
-            <h3>Java</h3>
+            <h3>C</h3>
             <p>Programming / DSA</p>
           </div>
 
           <div className="skill-row">
             <span>02</span>
-            <h3>React</h3>
-            <p>Frontend Development</p>
+            <h3>C++</h3>
+            <p>Programming / DSA</p>
           </div>
 
           <div className="skill-row">
             <span>03</span>
-            <h3>JavaScript</h3>
-            <p>Web Development</p>
+            <h3>Java</h3>
+            <p>Programming / DSA</p>
           </div>
 
           <div className="skill-row">
             <span>04</span>
-            <h3>Node.js</h3>
-            <p>Backend Development</p>
+            <h3>HTML</h3>
+            <p>Frontend Development</p>
           </div>
 
           <div className="skill-row">
             <span>05</span>
-            <h3>Python</h3>
-            <p>Programming / Problem Solving</p>
+            <h3>CSS</h3>
+            <p>Frontend Development</p>
           </div>
 
           <div className="skill-row">
             <span>06</span>
-            <h3>SQL</h3>
-            <p>Database Management</p>
+            <h3>JavaScript</h3>
+            <p>Frontend Development</p>
           </div>
 
           <div className="skill-row">
             <span>07</span>
-            <h3>MongoDB</h3>
-            <p>NoSQL Database</p>
+            <h3>SQL</h3>
+            <p>Database Management</p>
           </div>
 
           <div className="skill-row">
