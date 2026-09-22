@@ -8,116 +8,62 @@ import "./App.css";
 const projects = [
   {
     id: 1,
-    title: "StyleNew",
+    title: "Camping Website",
     category: "Web",
-    type: "FULL STACK E-COMMERCE",
+    type: "CAMPING & OUTDOOR",
     description:
-      "A modern e-commerce platform for women's care products with a clean UI and smooth user experience.",
-    image: "/projects/stylenew.png",
-    technologies: ["React", "Node.js", "Express", "MongoDB"],
+      "A modern and responsive camping website designed to showcase outdoor destinations with an engaging and user-friendly interface.",
+    image: "/projects/camping.png",
+    technologies: ["HTML", "CSS", "JavaScript"],
     github: "#",
-    live: "https://stylenew-frontend2.onrender.com",
+    live: "#",
   },
 
   {
     id: 2,
-    title: "Camply",
+    title: "Portfolio Website",
     category: "Web",
-    type: "WEB APPLICATION",
+    type: "PERSONAL PORTFOLIO",
     description:
-      "A modern camping and outdoor experience platform designed with a simple and engaging interface.",
-    image: "/projects/camply.png",
-    technologies: ["React", "Node.js", "Express", "MongoDB"],
+      "A modern personal portfolio website designed to showcase my skills, projects, education and development journey.",
+    image: "/projects/portfolio.png",
+    technologies: ["React", "JavaScript", "CSS"],
     github: "#",
-    live: "https://camplyy.netlify.app/",
+    live: "#",
   },
 
   {
     id: 3,
-    title: "Railway Reservation System",
-    category: "Java",
-    type: "DESKTOP APPLICATION",
+    title: "3-D Website",
+    category: "Web",
+    type: "3D WEB EXPERIENCE",
     description:
-      "A Java-based railway reservation system with login, registration, booking and dashboard features.",
-    image: "/projects/railway.png",
-    technologies: ["Java", "Swing", "MySQL"],
+      "An interactive 3D website focused on creating an immersive visual experience with modern web technologies.",
+    image: "/projects/3d-website.png",
+    technologies: ["HTML", "CSS", "JavaScript", "Three.js"],
     github: "#",
     live: "#",
   },
 
   {
     id: 4,
-    title: "Weather Application",
-    category: "Python",
-    type: "PYTHON APPLICATION",
+    title: "To-Do List",
+    category: "Web",
+    type: "PRODUCTIVITY APP",
     description:
-      "A weather application that displays weather information using a weather API.",
-    image: "/projects/weather.png",
-    technologies: ["Python", "API"],
-    github: "#",
-    live: "#",
-  },
-
-  {
-    id: 5,
-    title: "Digital Clock",
-    category: "Python",
-    type: "PYTHON PROJECT",
-    description:
-      "A simple digital clock application built with Python and designed with a clean interface.",
-    image: "/projects/clock.png",
-    technologies: ["Python", "Tkinter"],
-    github: "#",
-    live: "#",
-  },
-
-  {
-    id: 6,
-    title: "Image Processing Project",
-    category: "AI/ML",
-    type: "IMAGE PROCESSING",
-    description:
-      "An image processing project exploring computer vision techniques using Python.",
-    image: "/projects/image-processing.png",
-    technologies: ["Python", "OpenCV", "AI"],
-    github: "#",
-    live: "#",
-  },
-
-  {
-    id: 7,
-    title: "Port Scanner",
-    category: "Python",
-    type: "NETWORKING PROJECT",
-    description:
-      "A GUI-based port scanner designed to scan ports and identify open services.",
-    image: "/projects/port-scanner.png",
-    technologies: ["Python", "Tkinter", "Networking"],
-    github: "#",
-    live: "#",
-  },
-
-  {
-    id: 8,
-    title: "Stopwatch",
-    category: "Python",
-    type: "PYTHON APPLICATION",
-    description:
-      "A simple stopwatch application with start, pause and reset functionality.",
-    image: "/projects/stopwatch.png",
-    technologies: ["Python", "Tkinter"],
+      "A simple and interactive To-Do List application for organizing daily tasks with a clean and easy-to-use interface.",
+    image: "/projects/todo.png",
+    technologies: ["HTML", "CSS", "JavaScript"],
     github: "#",
     live: "#",
   },
 ];
-
 
 /* ==================================================
    APP
 ================================================== */
 
 function App() {
-
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredProjects =
@@ -126,7 +72,6 @@ function App() {
       : projects.filter(
         (project) => project.category === activeCategory
       );
-
 
   return (
     <div className="portfolio">
@@ -142,13 +87,11 @@ function App() {
         </a>
 
         <div className="nav-links">
-
           <a href="#work">Work</a>
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
           <a href="#education">Education</a>
           <a href="#contact">Contact</a>
-
         </div>
 
         <a href="#contact" className="nav-talk">
@@ -344,6 +287,7 @@ function App() {
           02
         </div>
 
+
         <div className="section-heading">
 
           <p>SELECTED WORK</p>
@@ -361,23 +305,21 @@ function App() {
 
         <div className="project-filters">
 
-          {["All", "Web", "Java", "Python", "AI/ML"].map(
-            (category) => (
+          {["All", "Web"].map((category) => (
 
-              <button
-                key={category}
-                className={
-                  activeCategory === category
-                    ? "filter-btn active"
-                    : "filter-btn"
-                }
-                onClick={() => setActiveCategory(category)}
-              >
-                {category}
-              </button>
+            <button
+              key={category}
+              className={
+                activeCategory === category
+                  ? "filter-btn active"
+                  : "filter-btn"
+              }
+              onClick={() => setActiveCategory(category)}
+            >
+              {category}
+            </button>
 
-            )
-          )}
+          ))}
 
         </div>
 
@@ -401,9 +343,21 @@ function App() {
                   src={project.image}
                   alt={project.title}
                   onError={(e) => {
+
                     e.currentTarget.style.display = "none";
+
+                    const placeholder =
+                      e.currentTarget.nextElementSibling;
+
+                    if (placeholder) {
+                      placeholder.style.display = "flex";
+                    }
+
                   }}
                 />
+
+
+                {/* FALLBACK */}
 
                 <div className="project-image-placeholder">
 
@@ -417,21 +371,33 @@ function App() {
 
                 </div>
 
-                <div className="project-overlay">
+
+                {/* TOP INFORMATION */}
+
+                <div className="project-top-info">
 
                   <span>
                     {String(project.id).padStart(2, "0")}
                   </span>
 
-                  {project.live !== "#" && (
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      View ↗
-                    </a>
-                  )}
+                  <span>
+                    {project.category}
+                  </span>
+
+                </div>
+
+
+                {/* HOVER */}
+
+                <div className="project-hover">
+
+                  <div className="project-hover-circle">
+                    ↗
+                  </div>
+
+                  <span>
+                    VIEW PROJECT
+                  </span>
 
                 </div>
 
@@ -442,19 +408,22 @@ function App() {
 
               <div className="project-card-content">
 
-                <p className="project-category">
-                  {project.type}
-                </p>
+                <div className="project-title-area">
 
+                  <div>
 
-                <div className="project-title-row">
+                    <p className="project-category">
+                      {project.type}
+                    </p>
 
-                  <h3>
-                    {project.title}
-                  </h3>
+                    <h3>
+                      {project.title}
+                    </h3>
 
-                  <span className="project-category-badge">
-                    {project.category}
+                  </div>
+
+                  <span className="project-number">
+                    {String(project.id).padStart(2, "0")}
                   </span>
 
                 </div>
@@ -487,6 +456,7 @@ function App() {
                 <div className="project-links">
 
                   {project.github !== "#" && (
+
                     <a
                       href={project.github}
                       target="_blank"
@@ -494,9 +464,12 @@ function App() {
                     >
                       GitHub ↗
                     </a>
+
                   )}
 
+
                   {project.live !== "#" && (
+
                     <a
                       href={project.live}
                       target="_blank"
@@ -504,7 +477,18 @@ function App() {
                     >
                       Live Demo ↗
                     </a>
+
                   )}
+
+
+                  {project.github === "#" &&
+                    project.live === "#" && (
+
+                      <span className="project-status">
+                        PROJECT SHOWCASE
+                      </span>
+
+                    )}
 
                 </div>
 
@@ -696,14 +680,14 @@ function App() {
 
         </div>
 
+
         <a
           href="/resume.pdf"
           className="resume-button"
           target="_blank"
           rel="noreferrer"
         >
-          View Resume
-          <span>↗</span>
+          View Resume <span>↗</span>
         </a>
 
       </section>
@@ -731,7 +715,6 @@ function App() {
           <br />
           SOMETHING <em>GREAT.</em>
         </h2>
-
 
         <a
           href="mailto:snehas8100@gmail.com"
