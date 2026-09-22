@@ -1,123 +1,58 @@
 import { useState } from "react";
 import "./App.css";
 
-/* ==================================================
-   PROJECT DATA
-================================================== */
-
 const projects = [
   {
     id: 1,
-    title: "StyleNew",
-    category: "Web",
-    type: "FULL STACK E-COMMERCE",
-    description:
-      "A modern e-commerce platform for women's care products with a clean UI and smooth user experience.",
-    image: "/projects/stylenew.png",
-    technologies: ["React", "Node.js", "Express", "MongoDB"],
-    github: "#",
-    live: "https://stylenew-frontend2.onrender.com",
-  },
-
-  {
-    id: 2,
-    title: "Camply",
+    title: "Camping Website",
     category: "Web",
     type: "WEB APPLICATION",
+    image: "/projects/camping.png",
     description:
-      "A modern camping and outdoor experience platform designed with a simple and engaging interface.",
-    image: "/projects/camply.png",
-    technologies: ["React", "Node.js", "Express", "MongoDB"],
+      "A modern and responsive camping website designed to showcase camping destinations and create an engaging outdoor experience.",
+    tech: ["HTML", "CSS", "JavaScript"],
     github: "#",
-    live: "https://camplyy.netlify.app/",
+    live: "#",
   },
-
+  {
+    id: 2,
+    title: "Portfolio Website",
+    category: "Web",
+    type: "PERSONAL PORTFOLIO",
+    image: "/projects/portfolio.png",
+    description:
+      "A responsive personal portfolio website showcasing skills, projects, education and contact information.",
+    tech: ["React", "JavaScript", "CSS"],
+    github: "#",
+    live: "#",
+  },
   {
     id: 3,
-    title: "Railway Reservation System",
-    category: "Java",
-    type: "DESKTOP APPLICATION",
+    title: "3-D Website",
+    category: "Web",
+    type: "3D WEB EXPERIENCE",
+    image: "/projects/3d-website.png",
     description:
-      "A Java-based railway reservation system with login, registration, booking and dashboard features.",
-    image: "/projects/railway.png",
-    technologies: ["Java", "Swing", "MySQL"],
+      "An interactive 3D website focused on creating an immersive and visually engaging web experience.",
+    tech: ["HTML", "CSS", "JavaScript", "Three.js"],
     github: "#",
     live: "#",
   },
-
   {
     id: 4,
-    title: "Weather Application",
-    category: "Python",
-    type: "PYTHON APPLICATION",
+    title: "To-Do List",
+    category: "Web",
+    type: "PRODUCTIVITY APPLICATION",
+    image: "/projects/todo.png",
     description:
-      "A weather application that displays weather information using a weather API.",
-    image: "/projects/weather.png",
-    technologies: ["Python", "API"],
-    github: "#",
-    live: "#",
-  },
-
-  {
-    id: 5,
-    title: "Digital Clock",
-    category: "Python",
-    type: "PYTHON PROJECT",
-    description:
-      "A simple digital clock application built with Python and designed with a clean interface.",
-    image: "/projects/clock.png",
-    technologies: ["Python", "Tkinter"],
-    github: "#",
-    live: "#",
-  },
-
-  {
-    id: 6,
-    title: "Image Processing Project",
-    category: "AI/ML",
-    type: "IMAGE PROCESSING",
-    description:
-      "An image processing project exploring computer vision techniques using Python.",
-    image: "/projects/image-processing.png",
-    technologies: ["Python", "OpenCV", "AI"],
-    github: "#",
-    live: "#",
-  },
-
-  {
-    id: 7,
-    title: "Port Scanner",
-    category: "Python",
-    type: "NETWORKING PROJECT",
-    description:
-      "A GUI-based port scanner designed to scan ports and identify open services.",
-    image: "/projects/port-scanner.png",
-    technologies: ["Python", "Tkinter", "Networking"],
-    github: "#",
-    live: "#",
-  },
-
-  {
-    id: 8,
-    title: "Stopwatch",
-    category: "Python",
-    type: "PYTHON APPLICATION",
-    description:
-      "A simple stopwatch application with start, pause and reset functionality.",
-    image: "/projects/stopwatch.png",
-    technologies: ["Python", "Tkinter"],
+      "A simple and interactive To-Do List application for adding, managing and completing daily tasks.",
+    tech: ["HTML", "CSS", "JavaScript"],
     github: "#",
     live: "#",
   },
 ];
 
-
-/* ==================================================
-   APP
-================================================== */
-
 function App() {
-
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredProjects =
@@ -127,274 +62,145 @@ function App() {
         (project) => project.category === activeCategory
       );
 
-
   return (
     <div className="portfolio">
 
-      {/* ==================================================
-          NAVBAR
-      ================================================== */}
-
+      {/* ================= NAVBAR ================= */}
       <nav className="navbar">
-
-        <a href="#home" className="logo">
-          SNEHA<span>.</span>
-        </a>
+        <div className="logo">SNEHA.</div>
 
         <div className="nav-links">
-
-          <a href="#work">Work</a>
+          <a href="#home">Home</a>
           <a href="#about">About</a>
+          <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
           <a href="#education">Education</a>
           <a href="#contact">Contact</a>
-
         </div>
 
-        <a href="#contact" className="nav-talk">
-          Let's Talk <span>↗</span>
+        <a href="#contact" className="nav-button">
+          LET'S TALK ↗
         </a>
-
       </nav>
 
-
-      {/* ==================================================
-          HERO
-      ================================================== */}
-
+      {/* ================= HERO ================= */}
       <section className="hero" id="home">
-
         <div className="hero-left">
-
-          <p className="eyebrow">
+          <p className="hero-small-text">
             HELLO, I'M SNEHA
           </p>
 
           <h1>
             I MAKE
             <br />
-            <em>IDEAS</em>
-            <br />
-            HAPPEN<span>.</span>
+            IDEAS <span>HAPPEN.</span>
           </h1>
 
           <p className="hero-description">
-            B.Tech IT student and aspiring software developer
-            passionate about building beautiful, functional and
-            meaningful digital experiences.
+            A passionate Information Technology student who loves
+            creating modern websites and learning new technologies.
           </p>
 
           <div className="hero-buttons">
-
-            <a href="#work" className="primary-button">
-              Explore My Work
-              <span>↗</span>
+            <a href="#projects" className="primary-btn">
+              VIEW MY WORK ↗
             </a>
 
-            <a href="#about" className="secondary-button">
-              More about me ↓
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              VIEW RESUME ↗
             </a>
-
           </div>
-
         </div>
-
 
         <div className="hero-right">
-
-          <div className="photo-wrapper">
-
-            <div className="photo-ring"></div>
-
-            <img
-              src="/profile.jpg"
-              alt="Sneha"
-              className="profile-photo"
-            />
-
-            <div className="photo-tag">
-              <span>CREATIVE</span>
-              <span>DEVELOPER</span>
-            </div>
-
+          <div className="image-wrapper">
+            <img src="/profile.jpg" alt="Sneha" />
           </div>
 
-          <div className="hero-year">
-            2026
-          </div>
-
-          <div className="floating-star">
-            ✦
-          </div>
-
+          <div className="year">2026</div>
+          <div className="star">✦</div>
         </div>
-
       </section>
 
-
-      {/* ==================================================
-          TECHNOLOGY STRIP
-      ================================================== */}
-
-      <div className="tech-strip">
-
-        <div className="tech-track">
-
-          <span>C</span>
-          <i>✦</i>
-
-          <span>C++</span>
-          <i>✦</i>
-
-          <span>JAVA</span>
-          <i>✦</i>
-
-          <span>SQL</span>
-          <i>✦</i>
-
-          <span>HTML</span>
-          <i>✦</i>
-
-          <span>CSS</span>
-          <i>✦</i>
-
-          <span>JAVASCRIPT</span>
-          <i>✦</i>
-
-          <span>DBMS</span>
-          <i>✦</i>
-
-          <span>REACT</span>
-          <i>✦</i>
-
+      {/* ================= MARQUEE ================= */}
+      <div className="marquee">
+        <div className="marquee-content">
+          C • C++ • JAVA • SQL • HTML • CSS • JAVASCRIPT • REACT • DBMS •
+          C • C++ • JAVA • SQL • HTML • CSS • JAVASCRIPT • REACT • DBMS •
         </div>
-
       </div>
 
-
-      {/* ==================================================
-          ABOUT
-      ================================================== */}
-
-      <section className="section about-section" id="about">
-
-        <div className="section-number">
-          01
+      {/* ================= ABOUT ================= */}
+      <section className="about-section" id="about">
+        <div className="section-label">
+          01 — ABOUT ME
         </div>
 
-        <div className="section-heading">
-
-          <p>GET TO KNOW ME</p>
-
+        <div className="about-content">
           <h2>
-            A little bit
+            I LOVE TURNING
             <br />
-            <em>about me.</em>
+            <span>IDEAS INTO REALITY.</span>
           </h2>
 
-        </div>
-
-
-        <div className="about-layout">
-
-          <div className="about-main">
-
-            <p className="about-big">
-              I'm Sneha — an Information Technology student
-              who enjoys turning ideas into clean, useful and
-              engaging digital experiences.
-            </p>
-
-          </div>
-
-
-          <div className="about-details">
-
+          <div className="about-text">
             <p>
-              I'm passionate about software development,
-              web development and problem solving. I enjoy
-              learning new technologies and applying them
-              through practical projects.
+              I'm Sneha Santra, an Information Technology student
+              passionate about web development and software development.
             </p>
 
             <p>
-              Currently, I'm focusing on strengthening my
-              programming, development and DSA skills while
-              preparing myself for a career in technology.
+              I enjoy creating clean, responsive and user-friendly
+              websites while continuously improving my programming
+              and problem-solving skills.
             </p>
-
-            <a href="#contact" className="underlined-link">
-              Let's connect <span>↗</span>
-            </a>
-
           </div>
-
         </div>
-
       </section>
 
+      {/* ================= PROJECTS ================= */}
+      <section className="projects-section" id="projects">
 
-      {/* ==================================================
-          PROJECTS
-      ================================================== */}
-
-      <section className="section work-section" id="work">
-
-        <div className="section-number">
-          02
-        </div>
-
-        <div className="section-heading">
-
-          <p>SELECTED WORK</p>
+        <div className="section-header">
+          <div className="section-label">
+            02 — SELECTED WORK
+          </div>
 
           <h2>
-            Things I've
+            PROJECTS THAT
             <br />
-            <em>built.</em>
+            <span>MATTER.</span>
           </h2>
-
         </div>
 
-
-        {/* PROJECT FILTERS */}
-
+        {/* FILTERS */}
         <div className="project-filters">
-
-          {["All", "Web", "Java", "Python", "AI/ML"].map(
-            (category) => (
-
-              <button
-                key={category}
-                className={
-                  activeCategory === category
-                    ? "filter-btn active"
-                    : "filter-btn"
-                }
-                onClick={() => setActiveCategory(category)}
-              >
-                {category}
-              </button>
-
-            )
-          )}
-
+          {["All", "Web"].map((category) => (
+            <button
+              key={category}
+              className={`filter-btn ${activeCategory === category ? "active" : ""
+                }`}
+              onClick={() => setActiveCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
         </div>
-
 
         {/* PROJECT GRID */}
-
         <div className="project-grid">
 
           {filteredProjects.map((project) => (
-
-            <article
+            <div
               className="project-card"
               key={project.id}
             >
 
               {/* PROJECT IMAGE */}
-
               <div className="project-image">
 
                 <img
@@ -402,56 +208,49 @@ function App() {
                   alt={project.title}
                   onError={(e) => {
                     e.currentTarget.style.display = "none";
+                    e.currentTarget.nextElementSibling.style.display =
+                      "flex";
                   }}
                 />
 
                 <div className="project-image-placeholder">
-
                   <span>
-                    {String(project.id).padStart(2, "0")}
+                    0{project.id}
                   </span>
 
                   <strong>
                     {project.title}
                   </strong>
-
                 </div>
 
                 <div className="project-overlay">
-
-                  <span>
-                    {String(project.id).padStart(2, "0")}
-                  </span>
-
                   {project.live !== "#" && (
                     <a
                       href={project.live}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      View ↗
+                      VIEW ↗
                     </a>
                   )}
-
                 </div>
 
               </div>
 
-
               {/* PROJECT CONTENT */}
-
               <div className="project-card-content">
-
-                <p className="project-category">
-                  {project.type}
-                </p>
-
 
                 <div className="project-title-row">
 
-                  <h3>
-                    {project.title}
-                  </h3>
+                  <div>
+                    <p className="project-category">
+                      {project.type}
+                    </p>
+
+                    <h3>
+                      {project.title}
+                    </h3>
+                  </div>
 
                   <span className="project-category-badge">
                     {project.category}
@@ -459,30 +258,17 @@ function App() {
 
                 </div>
 
-
                 <p className="project-description">
                   {project.description}
                 </p>
 
-
-                {/* TECHNOLOGIES */}
-
                 <div className="project-tags">
-
-                  {project.technologies.map(
-                    (technology) => (
-
-                      <span key={technology}>
-                        {technology}
-                      </span>
-
-                    )
-                  )}
-
+                  {project.tech.map((tech) => (
+                    <span key={tech}>
+                      {tech}
+                    </span>
+                  ))}
                 </div>
-
-
-                {/* PROJECT LINKS */}
 
                 <div className="project-links">
 
@@ -492,7 +278,7 @@ function App() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      GitHub ↗
+                      GITHUB ↗
                     </a>
                   )}
 
@@ -502,244 +288,139 @@ function App() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Live Demo ↗
+                      LIVE DEMO ↗
                     </a>
                   )}
 
                 </div>
 
               </div>
-
-            </article>
-
+            </div>
           ))}
 
         </div>
-
       </section>
 
+      {/* ================= SKILLS ================= */}
+      <section className="skills-section" id="skills">
 
-      {/* ==================================================
-          SKILLS
-      ================================================== */}
-
-      <section className="section skills-section" id="skills">
-
-        <div className="section-number">
-          03
+        <div className="section-label">
+          03 — SKILLS
         </div>
 
-        <div className="section-heading">
+        <h2>
+          MY <span>TOOLKIT.</span>
+        </h2>
 
-          <p>MY TOOLKIT</p>
-
-          <h2>
-            Skills &
-            <br />
-            <em>technologies.</em>
-          </h2>
-
-        </div>
-
-
-        <div className="skills-list">
-
-          <div className="skill-row">
-            <span>01</span>
-            <h3>C</h3>
-            <p>Programming / DSA</p>
-          </div>
-
-          <div className="skill-row">
-            <span>02</span>
-            <h3>C++</h3>
-            <p>Programming / DSA</p>
-          </div>
-
-          <div className="skill-row">
-            <span>03</span>
-            <h3>Java</h3>
-            <p>Programming / DSA</p>
-          </div>
-
-          <div className="skill-row">
-            <span>04</span>
-            <h3>HTML</h3>
-            <p>Frontend Development</p>
-          </div>
-
-          <div className="skill-row">
-            <span>05</span>
-            <h3>CSS</h3>
-            <p>Frontend Development</p>
-          </div>
-
-          <div className="skill-row">
-            <span>06</span>
-            <h3>JavaScript</h3>
-            <p>Frontend Development</p>
-          </div>
-
-          <div className="skill-row">
-            <span>07</span>
-            <h3>SQL</h3>
-            <p>Database Management</p>
-          </div>
-
-          <div className="skill-row">
-            <span>08</span>
-            <h3>Git & GitHub</h3>
-            <p>Version Control</p>
-          </div>
-
+        <div className="skills-grid">
+          <div>C</div>
+          <div>C++</div>
+          <div>Java</div>
+          <div>HTML</div>
+          <div>CSS</div>
+          <div>JavaScript</div>
+          <div>React</div>
+          <div>SQL</div>
+          <div>Git & GitHub</div>
         </div>
 
       </section>
 
-
-      {/* ==================================================
-          EDUCATION
-      ================================================== */}
-
+      {/* ================= EDUCATION ================= */}
       <section
-        className="section education-section"
+        className="education-section"
         id="education"
       >
 
-        <div className="section-number">
-          04
+        <div className="section-label">
+          04 — EDUCATION
         </div>
 
-        <div className="section-heading">
+        <div className="education-item">
 
-          <p>MY JOURNEY</p>
-
-          <h2>
-            Education &
-            <br />
-            <em>learning.</em>
-          </h2>
-
-        </div>
-
-
-        <div className="education-card">
-
-          <div className="education-year">
+          <span>
             2023 — 2027
-          </div>
+          </span>
 
           <div>
-
-            <p className="education-type">
-              BACHELOR OF TECHNOLOGY
-            </p>
-
             <h3>
-              Information Technology
+              B.Tech in Information Technology
             </h3>
 
-            <p className="college">
-              Government College of Engineering and Textile
-              Technology, Serampore
+            <p>
+              Government College of Engineering and
+              Textile Technology, Serampore
             </p>
-
           </div>
 
         </div>
 
+        <div className="education-item">
 
-        <div className="education-card">
-
-          <div className="education-year">
+          <span>
             2023
-          </div>
+          </span>
 
           <div>
-
-            <p className="education-type">
-              HIGHER SECONDARY
-            </p>
-
             <h3>
-              Higher Secondary Education
+              Higher Secondary
             </h3>
 
-            <p className="college">
+            <p>
               Ramakrishna Vivekananda Mission Vidyabhawan
             </p>
-
           </div>
 
         </div>
 
       </section>
 
-
-      {/* ==================================================
-          RESUME
-      ================================================== */}
-
+      {/* ================= RESUME ================= */}
       <section className="resume-section">
 
         <div>
-
           <p>
             WANT TO KNOW MORE?
           </p>
 
           <h2>
-            Take a look at
-            <br />
-            <em>my resume.</em>
+            CHECK OUT MY RESUME.
           </h2>
-
         </div>
 
         <a
           href="/resume.pdf"
-          className="resume-button"
           target="_blank"
           rel="noreferrer"
+          className="resume-btn"
         >
-          View Resume
-          <span>↗</span>
+          VIEW RESUME ↗
         </a>
 
       </section>
 
-
-      {/* ==================================================
-          CONTACT
-      ================================================== */}
-
+      {/* ================= CONTACT ================= */}
       <section
         className="contact-section"
         id="contact"
       >
 
-        <div className="contact-number">
-          05
+        <div className="section-label">
+          05 — CONTACT
         </div>
-
-        <p className="contact-small">
-          HAVE A PROJECT IN MIND?
-        </p>
 
         <h2>
           LET'S MAKE
           <br />
-          SOMETHING <em>GREAT.</em>
+          SOMETHING <span>GREAT.</span>
         </h2>
-
 
         <a
           href="mailto:snehas8100@gmail.com"
-          className="contact-button"
+          className="email-link"
         >
-          Get in touch ↗
+          snehas8100@gmail.com ↗
         </a>
-
 
         <div className="social-links">
 
@@ -748,7 +429,7 @@ function App() {
             target="_blank"
             rel="noreferrer"
           >
-            GitHub ↗
+            GITHUB ↗
           </a>
 
           <a
@@ -756,32 +437,22 @@ function App() {
             target="_blank"
             rel="noreferrer"
           >
-            LinkedIn ↗
-          </a>
-
-          <a href="mailto:snehas8100@gmail.com">
-            Email ↗
+            LINKEDIN ↗
           </a>
 
         </div>
 
       </section>
 
-
-      {/* ==================================================
-          FOOTER
-      ================================================== */}
-
+      {/* ================= FOOTER ================= */}
       <footer>
-
         <p>
-          © 2026 Sneha Santra
+          © 2026 SNEHA SANTRA
         </p>
 
         <p>
-          Designed & Built with ♡
+          BUILT WITH PASSION & CODE.
         </p>
-
       </footer>
 
     </div>
