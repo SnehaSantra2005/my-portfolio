@@ -1,31 +1,166 @@
+import { useState } from "react";
 import "./App.css";
 
+/* ==================================================
+   PROJECT DATA
+================================================== */
+
+const projects = [
+  {
+    id: 1,
+    title: "StyleNew",
+    category: "Web",
+    type: "FULL STACK E-COMMERCE",
+    description:
+      "A modern e-commerce platform for women's care products with a clean UI and smooth user experience.",
+    image: "/projects/stylenew.png",
+    technologies: ["React", "Node.js", "Express", "MongoDB"],
+    github: "#",
+    live: "https://stylenew-frontend2.onrender.com",
+  },
+
+  {
+    id: 2,
+    title: "Camply",
+    category: "Web",
+    type: "WEB APPLICATION",
+    description:
+      "A modern camping and outdoor experience platform designed with a simple and engaging interface.",
+    image: "/projects/camply.png",
+    technologies: ["React", "Node.js", "Express", "MongoDB"],
+    github: "#",
+    live: "https://camplyy.netlify.app/",
+  },
+
+  {
+    id: 3,
+    title: "Railway Reservation System",
+    category: "Java",
+    type: "DESKTOP APPLICATION",
+    description:
+      "A Java-based railway reservation system with login, registration, booking and dashboard features.",
+    image: "/projects/railway.png",
+    technologies: ["Java", "Swing", "MySQL"],
+    github: "#",
+    live: "#",
+  },
+
+  {
+    id: 4,
+    title: "Weather Application",
+    category: "Python",
+    type: "PYTHON APPLICATION",
+    description:
+      "A weather application that displays weather information using a weather API.",
+    image: "/projects/weather.png",
+    technologies: ["Python", "API"],
+    github: "#",
+    live: "#",
+  },
+
+  {
+    id: 5,
+    title: "Digital Clock",
+    category: "Python",
+    type: "PYTHON PROJECT",
+    description:
+      "A simple digital clock application built with Python and designed with a clean interface.",
+    image: "/projects/clock.png",
+    technologies: ["Python", "Tkinter"],
+    github: "#",
+    live: "#",
+  },
+
+  {
+    id: 6,
+    title: "Image Processing Project",
+    category: "AI/ML",
+    type: "IMAGE PROCESSING",
+    description:
+      "An image processing project exploring computer vision techniques using Python.",
+    image: "/projects/image-processing.png",
+    technologies: ["Python", "OpenCV", "AI"],
+    github: "#",
+    live: "#",
+  },
+
+  {
+    id: 7,
+    title: "Port Scanner",
+    category: "Python",
+    type: "NETWORKING PROJECT",
+    description:
+      "A GUI-based port scanner designed to scan ports and identify open services.",
+    image: "/projects/port-scanner.png",
+    technologies: ["Python", "Tkinter", "Networking"],
+    github: "#",
+    live: "#",
+  },
+
+  {
+    id: 8,
+    title: "Stopwatch",
+    category: "Python",
+    type: "PYTHON APPLICATION",
+    description:
+      "A simple stopwatch application with start, pause and reset functionality.",
+    image: "/projects/stopwatch.png",
+    technologies: ["Python", "Tkinter"],
+    github: "#",
+    live: "#",
+  },
+];
+
+
+/* ==================================================
+   APP
+================================================== */
+
 function App() {
+
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredProjects =
+    activeCategory === "All"
+      ? projects
+      : projects.filter(
+        (project) => project.category === activeCategory
+      );
+
+
   return (
     <div className="portfolio">
 
-      {/* ================= NAVBAR ================= */}
+      {/* ==================================================
+          NAVBAR
+      ================================================== */}
 
       <nav className="navbar">
+
         <a href="#home" className="logo">
           SNEHA<span>.</span>
         </a>
 
         <div className="nav-links">
+
           <a href="#work">Work</a>
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
           <a href="#education">Education</a>
           <a href="#contact">Contact</a>
+
         </div>
 
         <a href="#contact" className="nav-talk">
           Let's Talk <span>↗</span>
         </a>
+
       </nav>
 
 
-      {/* ================= HERO ================= */}
+      {/* ==================================================
+          HERO
+      ================================================== */}
 
       <section className="hero" id="home">
 
@@ -88,14 +223,18 @@ function App() {
             2026
           </div>
 
-          <div className="floating-star">✦</div>
+          <div className="floating-star">
+            ✦
+          </div>
 
         </div>
 
       </section>
 
 
-      {/* ================= TECH MARQUEE ================= */}
+      {/* ==================================================
+          TECHNOLOGY STRIP
+      ================================================== */}
 
       <div className="tech-strip">
 
@@ -133,7 +272,9 @@ function App() {
       </div>
 
 
-      {/* ================= ABOUT ================= */}
+      {/* ==================================================
+          ABOUT
+      ================================================== */}
 
       <section className="section about-section" id="about">
 
@@ -193,7 +334,9 @@ function App() {
       </section>
 
 
-      {/* ================= PROJECTS ================= */}
+      {/* ==================================================
+          PROJECTS
+      ================================================== */}
 
       <section className="section work-section" id="work">
 
@@ -214,150 +357,171 @@ function App() {
         </div>
 
 
-        <div className="projects">
+        {/* PROJECT FILTERS */}
+
+        <div className="project-filters">
+
+          {["All", "Web", "Java", "Python", "AI/ML"].map(
+            (category) => (
+
+              <button
+                key={category}
+                className={
+                  activeCategory === category
+                    ? "filter-btn active"
+                    : "filter-btn"
+                }
+                onClick={() => setActiveCategory(category)}
+              >
+                {category}
+              </button>
+
+            )
+          )}
+
+        </div>
 
 
-          {/* STYLE NEW */}
+        {/* PROJECT GRID */}
 
-          <article className="project project-large">
+        <div className="project-grid">
 
-            <div className="project-number">
-              01
-            </div>
+          {filteredProjects.map((project) => (
 
-            <div className="project-preview stylenew-preview">
+            <article
+              className="project-card"
+              key={project.id}
+            >
 
-              <div className="preview-window">
+              {/* PROJECT IMAGE */}
 
-                <div className="preview-nav">
-                  <strong>StyleNew</strong>
+              <div className="project-image">
 
-                  <div>
-                    HOME &nbsp; SHOP &nbsp; CART
-                  </div>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
+
+                <div className="project-image-placeholder">
+
+                  <span>
+                    {String(project.id).padStart(2, "0")}
+                  </span>
+
+                  <strong>
+                    {project.title}
+                  </strong>
+
                 </div>
 
-                <div className="preview-content">
+                <div className="project-overlay">
 
-                  <p>WOMEN'S CARE</p>
+                  <span>
+                    {String(project.id).padStart(2, "0")}
+                  </span>
 
-                  <h4>
-                    Discover
-                    <br />
-                    Your Style.
-                  </h4>
-
-                  <div className="preview-products">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
+                  {project.live !== "#" && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View ↗
+                    </a>
+                  )}
 
                 </div>
 
               </div>
 
-            </div>
 
+              {/* PROJECT CONTENT */}
 
-            <div className="project-content">
-
-              <div>
+              <div className="project-card-content">
 
                 <p className="project-category">
-                  FULL STACK E-COMMERCE
+                  {project.type}
                 </p>
 
-                <h3>
-                  StyleNew
-                </h3>
+
+                <div className="project-title-row">
+
+                  <h3>
+                    {project.title}
+                  </h3>
+
+                  <span className="project-category-badge">
+                    {project.category}
+                  </span>
+
+                </div>
+
 
                 <p className="project-description">
-                  A modern e-commerce platform for women's
-                  care products, built with a focus on clean
-                  UI and smooth user experience.
+                  {project.description}
                 </p>
 
+
+                {/* TECHNOLOGIES */}
+
                 <div className="project-tags">
-                  <span>React</span>
-                  <span>Node.js</span>
-                  <span>Express</span>
-                  <span>MongoDB</span>
+
+                  {project.technologies.map(
+                    (technology) => (
+
+                      <span key={technology}>
+                        {technology}
+                      </span>
+
+                    )
+                  )}
+
+                </div>
+
+
+                {/* PROJECT LINKS */}
+
+                <div className="project-links">
+
+                  {project.github !== "#" && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      GitHub ↗
+                    </a>
+                  )}
+
+                  {project.live !== "#" && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Live Demo ↗
+                    </a>
+                  )}
+
                 </div>
 
               </div>
 
-              <a href="#" className="project-arrow">
-                View Project ↗
-              </a>
+            </article>
 
-            </div>
-
-          </article>
-
-
-          {/* CAMPLY */}
-
-          <article className="project project-small">
-
-            <div className="project-number">
-              02
-            </div>
-
-            <div className="project-preview camply-preview">
-
-              <div className="camply-logo">
-                CAMP
-                <br />
-                <em>LY</em>
-              </div>
-
-              <div className="camply-sun"></div>
-
-            </div>
-
-
-            <div className="project-content">
-
-              <div>
-
-                <p className="project-category">
-                  WEB APPLICATION
-                </p>
-
-                <h3>
-                  Camply
-                </h3>
-
-                <p className="project-description">
-                  A modern camping and outdoor experience
-                  platform designed with a simple and engaging
-                  interface.
-                </p>
-
-                <div className="project-tags">
-                  <span>React</span>
-                  <span>Node.js</span>
-                  <span>Express</span>
-                  <span>MongoDB</span>
-                </div>
-
-              </div>
-
-              <a href="https://camplyy.netlify.app/#" className="project-arrow">
-                View Project ↗
-              </a>
-
-            </div>
-
-          </article>
+          ))}
 
         </div>
 
       </section>
 
 
-      {/* ================= SKILLS ================= */}
+      {/* ==================================================
+          SKILLS
+      ================================================== */}
 
       <section className="section skills-section" id="skills">
 
@@ -433,9 +597,14 @@ function App() {
       </section>
 
 
-      {/* ================= EDUCATION ================= */}
+      {/* ==================================================
+          EDUCATION
+      ================================================== */}
 
-      <section className="section education-section" id="education">
+      <section
+        className="section education-section"
+        id="education"
+      >
 
         <div className="section-number">
           04
@@ -507,7 +676,9 @@ function App() {
       </section>
 
 
-      {/* ================= RESUME ================= */}
+      {/* ==================================================
+          RESUME
+      ================================================== */}
 
       <section className="resume-section">
 
@@ -525,17 +696,27 @@ function App() {
 
         </div>
 
-        <a href="/resume.pdf" className="resume-button">
-          Download Resume
-          <span>↓</span>
+        <a
+          href="/resume.pdf"
+          className="resume-button"
+          target="_blank"
+          rel="noreferrer"
+        >
+          View Resume
+          <span>↗</span>
         </a>
 
       </section>
 
 
-      {/* ================= CONTACT ================= */}
+      {/* ==================================================
+          CONTACT
+      ================================================== */}
 
-      <section className="contact-section" id="contact">
+      <section
+        className="contact-section"
+        id="contact"
+      >
 
         <div className="contact-number">
           05
@@ -551,8 +732,9 @@ function App() {
           SOMETHING <em>GREAT.</em>
         </h2>
 
+
         <a
-          href="snehas8100@gmail.com"
+          href="mailto:snehas8100@gmail.com"
           className="contact-button"
         >
           Get in touch ↗
@@ -561,15 +743,23 @@ function App() {
 
         <div className="social-links">
 
-          <a href="https://github.com/SnehaSantra2005">
+          <a
+            href="https://github.com/SnehaSantra2005"
+            target="_blank"
+            rel="noreferrer"
+          >
             GitHub ↗
           </a>
 
-          <a href="https://www.linkedin.com/in/sneha-santra-07279a301/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BIHsIGxNBSvy1kkNGanB9RA%3D%3D">
+          <a
+            href="https://www.linkedin.com/in/sneha-santra-07279a301/"
+            target="_blank"
+            rel="noreferrer"
+          >
             LinkedIn ↗
           </a>
 
-          <a href="snehas8100@gmail.com">
+          <a href="mailto:snehas8100@gmail.com">
             Email ↗
           </a>
 
@@ -578,7 +768,9 @@ function App() {
       </section>
 
 
-      {/* ================= FOOTER ================= */}
+      {/* ==================================================
+          FOOTER
+      ================================================== */}
 
       <footer>
 
