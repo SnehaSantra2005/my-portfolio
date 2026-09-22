@@ -16,7 +16,7 @@ const projects = [
     image: "/projects/camping.png",
     technologies: ["HTML", "CSS", "JavaScript"],
     github: "#",
-    live: "#",
+    live: "https://camplyy.netlify.app/",
   },
 
   {
@@ -42,7 +42,7 @@ const projects = [
     image: "/projects/3d-website.png",
     technologies: ["HTML", "CSS", "JavaScript", "Three.js"],
     github: "#",
-    live: "#",
+    live: "https://3-d-website-tau-ten.vercel.app/#",
   },
 
   {
@@ -55,7 +55,7 @@ const projects = [
     image: "/projects/todo.png",
     technologies: ["HTML", "CSS", "JavaScript"],
     github: "#",
-    live: "#",
+    live: "https://to-do-list-roan-nine-83.vercel.app/",
   },
 ];
 
