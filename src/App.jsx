@@ -29,7 +29,7 @@ const projects = [
     image: "/projects/portfolio.png",
     technologies: ["React", "JavaScript", "CSS"],
     github: "#",
-    live: "#",
+    live: "https://my-portfolio-nu-ruddy-27.vercel.app/#",
   },
 
   {
