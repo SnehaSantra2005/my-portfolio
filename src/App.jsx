@@ -101,28 +101,28 @@ function App() {
 
         <div className="tech-track">
 
+          <span>C</span>
+          <i>✦</i>
+
+          <span>C++</span>
+          <i>✦</i>
+
           <span>JAVA</span>
-          <i>✦</i>
-
-          <span>REACT</span>
-          <i>✦</i>
-
-          <span>JAVASCRIPT</span>
-          <i>✦</i>
-
-          <span>NODE.JS</span>
-          <i>✦</i>
-
-          <span>PYTHON</span>
           <i>✦</i>
 
           <span>SQL</span>
           <i>✦</i>
 
-          <span>MONGODB</span>
+          <span>HTML</span>
           <i>✦</i>
 
-          <span>JAVA</span>
+          <span>CSS</span>
+          <i>✦</i>
+
+          <span>JAVASCRIPT</span>
+          <i>✦</i>
+
+          <span>DBMS</span>
           <i>✦</i>
 
           <span>REACT</span>
