@@ -1,77 +1,20 @@
-import { useState } from "react";
 import "./App.css";
+import projects from "./data/projects";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import ProjectsPage from "./pages/ProjectsPage";
 
 /* ==================================================
    PROJECT DATA
 ================================================== */
 
-const projects = [
-  {
-    id: 1,
-    title: "Camping Website",
-    category: "Web",
-    type: "CAMPING & OUTDOOR",
-    description:
-      "A modern and responsive camping website designed to showcase outdoor destinations with an engaging and user-friendly interface.",
-    image: "/projects/camping.png",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    github: "#",
-    live: "https://camplyy.netlify.app/",
-  },
-
-  {
-    id: 2,
-    title: "Portfolio Website",
-    category: "Web",
-    type: "PERSONAL PORTFOLIO",
-    description:
-      "A modern personal portfolio website designed to showcase my skills, projects, education and development journey.",
-    image: "/projects/portfolio.png",
-    technologies: ["React", "JavaScript", "CSS"],
-    github: "#",
-    live: "https://my-portfolio-nu-ruddy-27.vercel.app/",
-  },
-
-  {
-    id: 3,
-    title: "3-D Website",
-    category: "Web",
-    type: "3D WEB EXPERIENCE",
-    description:
-      "An interactive 3D website focused on creating an immersive visual experience with modern web technologies.",
-    image: "/projects/3d-website.png",
-    technologies: ["HTML", "CSS", "JavaScript", "Three.js"],
-    github: "#",
-    live: "https://3-d-website-tau-ten.vercel.app/#",
-  },
-
-  {
-    id: 4,
-    title: "To-Do List",
-    category: "Web",
-    type: "PRODUCTIVITY APP",
-    description:
-      "A simple and interactive To-Do List application for organizing daily tasks with a clean and easy-to-use interface.",
-    image: "/projects/todo.png",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    github: "#",
-    live: "https://to-do-list-roan-nine-83.vercel.app/",
-  },
-];
 
 /* ==================================================
    APP
 ================================================== */
-
-function App() {
-  const [activeCategory, setActiveCategory] = useState("All");
-
-  const filteredProjects =
-    activeCategory === "All"
-      ? projects
-      : projects.filter(
-        (project) => project.category === activeCategory
-      );
+function HomePage() {
+  const featuredProjects = projects.filter(
+    (project) => project.featured
+  );
 
   return (
     <div className="portfolio">
@@ -278,230 +221,93 @@ function App() {
 
 
       {/* ==================================================
-          PROJECTS
-      ================================================== */}
+    PROJECTS
+================================================== */}
 
       <section className="section work-section" id="work">
-
-        <div className="section-number">
-          02
-        </div>
-
+        <div className="section-number">02</div>
 
         <div className="section-heading">
-
-          <p>SELECTED WORK</p>
-
+          <p>MY CREATIVE JOURNEY</p>
           <h2>
             Things I've
             <br />
             <em>built.</em>
           </h2>
-
         </div>
 
+        <div className="project-intro">
+          <p>
+            A selection of projects that showcase my development
+            journey and technical skills.
+          </p>
 
-        {/* PROJECT FILTERS */}
-
-        <div className="project-filters">
-
-          {["All", "Web"].map((category) => (
-
-            <button
-              key={category}
-              className={
-                activeCategory === category
-                  ? "filter-btn active"
-                  : "filter-btn"
-              }
-              onClick={() => setActiveCategory(category)}
-            >
-              {category}
-            </button>
-
-          ))}
-
+          <span>FEATURED PROJECTS ↗</span>
         </div>
-
-
-        {/* PROJECT GRID */}
 
         <div className="project-grid">
-
-          {filteredProjects.map((project) => (
-
-            <article
-              className="project-card"
-              key={project.id}
-            >
-
-              {/* PROJECT IMAGE */}
-
+          {featuredProjects.map((project, index) => (
+            <article className="project-card featured-project" key={project.id}>
               <div className="project-image">
-
                 <img
                   src={project.image}
                   alt={project.title}
                   onError={(e) => {
-
                     e.currentTarget.style.display = "none";
-
-                    const placeholder =
-                      e.currentTarget.nextElementSibling;
-
-                    if (placeholder) {
-                      placeholder.style.display = "flex";
-                    }
-
+                    const placeholder = e.currentTarget.nextElementSibling;
+                    if (placeholder) placeholder.style.display = "flex";
                   }}
                 />
 
-
-                {/* FALLBACK */}
-
                 <div className="project-image-placeholder">
-
-                  <span>
-                    {String(project.id).padStart(2, "0")}
-                  </span>
-
-                  <strong>
-                    {project.title}
-                  </strong>
-
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{project.title}</strong>
                 </div>
-
-
-                {/* TOP INFORMATION */}
 
                 <div className="project-top-info">
-
-                  <span>
-                    {String(project.id).padStart(2, "0")}
-                  </span>
-
-                  <span>
-                    {project.category}
-                  </span>
-
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <span>{project.category}</span>
                 </div>
-
-
-                {/* HOVER */}
-
-                <div className="project-hover">
-
-                  <div className="project-hover-circle">
-                    ↗
-                  </div>
-
-                  <span>
-                    VIEW PROJECT
-                  </span>
-
-                </div>
-
               </div>
 
-
-              {/* PROJECT CONTENT */}
-
               <div className="project-card-content">
-
-                <div className="project-title-area">
-
-                  <div>
-
-                    <p className="project-category">
-                      {project.type}
-                    </p>
-
-                    <h3>
-                      {project.title}
-                    </h3>
-
-                  </div>
-
-                  <span className="project-number">
-                    {String(project.id).padStart(2, "0")}
-                  </span>
-
-                </div>
-
+                <p className="project-category">{project.type}</p>
+                <h3>{project.title}</h3>
 
                 <p className="project-description">
                   {project.description}
                 </p>
 
-
-                {/* TECHNOLOGIES */}
-
                 <div className="project-tags">
-
-                  {project.technologies.map(
-                    (technology) => (
-
-                      <span key={technology}>
-                        {technology}
-                      </span>
-
-                    )
-                  )}
-
+                  {project.technologies.map((technology) => (
+                    <span key={technology}>{technology}</span>
+                  ))}
                 </div>
-
-
-                {/* PROJECT LINKS */}
 
                 <div className="project-links">
-
-                  {project.github !== "#" && (
-
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                  {project.github && (
+                    <a href={project.github} target="_blank" rel="noreferrer">
                       GitHub ↗
                     </a>
-
                   )}
 
-
-                  {project.live !== "#" && (
-
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                  {project.live && (
+                    <a href={project.live} target="_blank" rel="noreferrer">
                       Live Demo ↗
                     </a>
-
                   )}
-
-
-                  {project.github === "#" &&
-                    project.live === "#" && (
-
-                      <span className="project-status">
-                        PROJECT SHOWCASE
-                      </span>
-
-                    )}
-
                 </div>
-
               </div>
-
             </article>
-
           ))}
-
         </div>
 
+        <div className="view-all-projects">
+          <Link to="/projects">
+            View All Projects <span>↗</span>
+          </Link>
+        </div>
       </section>
-
 
       {/* ==================================================
           SKILLS
@@ -657,6 +463,32 @@ function App() {
 
         </div>
 
+
+        <div className="education-card">
+
+          <div className="education-year">
+            2021
+          </div>
+
+          <div>
+
+            <p className="education-type">
+              SECONDARY
+            </p>
+
+            <h3>
+              Secondary Education
+            </h3>
+
+            <p className="college">
+              Ramakrishna Vivekananda Mission Vidyabhawan
+            </p>
+
+          </div>
+
+        </div>
+
+
       </section>
 
 
@@ -771,4 +603,15 @@ function App() {
   );
 }
 
-export default App;
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App; 
