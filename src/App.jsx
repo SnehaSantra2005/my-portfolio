@@ -349,7 +349,7 @@ function HomePage() {
           <div className="skill-row">
             <span>03</span>
             <h3>Java</h3>
-            <p>Programming / DSA</p>
+            <p>Programming </p>
           </div>
 
           <div className="skill-row">
@@ -375,6 +375,7 @@ function HomePage() {
             <h3>SQL</h3>
             <p>Database Management</p>
           </div>
+
 
           <div className="skill-row">
             <span>08</span>
